@@ -12,6 +12,32 @@ public class CollectableItem {
     private boolean autographed;
     private String genre;
 
+    public double getSellPrice() {
+        double sellPrice = price;
+
+        if (rarity == RarityLevel.LOW) {
+            sellPrice = sellPrice * 1.1;
+        } else if (rarity == RarityLevel.MEDIUM) {
+            sellPrice = sellPrice * 1.2;
+        } else {
+            sellPrice = sellPrice * 1.5;
+        }
+
+        if (conservationState == ConservationState.DAMAGED) {
+            sellPrice = sellPrice * 0.9;
+        } else if (conservationState == ConservationState.LIKE_NEW) {
+            sellPrice = sellPrice * 1.1;
+        } else {
+            sellPrice = sellPrice * 1.25;
+        }
+
+        if (autographed) {
+            sellPrice = sellPrice * 1.5;
+        }
+
+        return sellPrice;
+    }
+
     public String getAuthor() {
         return author;
     }
