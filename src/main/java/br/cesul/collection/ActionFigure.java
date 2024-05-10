@@ -12,6 +12,17 @@ public class ActionFigure extends CollectableItem{
     private String accessories;
     private boolean articulated;
 
+    @Override
+    public double getSellPrice() {
+        double sellPrice = super.getSellPrice();
+
+        if (articulated) {
+            sellPrice = sellPrice * 1.3;
+        }
+
+        return sellPrice;
+    }
+
     public String getColor() {
         return color;
     }
